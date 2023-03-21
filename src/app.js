@@ -16,7 +16,7 @@ app.disable('x-powered-by');
 app.use(compression());
 
 app.use(cors({
-  origin: 'https://editor.p5js.org/',
+  origin: 'https://preview.p5js.org/',
 }));
 
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
