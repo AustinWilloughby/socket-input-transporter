@@ -7,12 +7,17 @@ const http = require('http');
 const { Server } = require('socket.io');
 const ioHandler = require('./io.js');
 const router = require('./router.js');
+const cors = require('cors');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 const app = express();
 app.disable('x-powered-by');
 app.use(compression());
+
+app.use(cors({
+  origin: 'https://editor.p5js.org/',
+}));
 
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
 
