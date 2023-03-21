@@ -22,7 +22,6 @@ router(app);
 
 const server = http.createServer(app);
 const io = new Server(server);
-io.set('transports', [ 'websocket' ]);
 ioHandler.registerIo(io);
 
 server.listen(port, (err) => {
