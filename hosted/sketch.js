@@ -1,11 +1,8 @@
 const socket = io();
 
-const controllerState = {
-  up: false,
-  down: false,
-}
+const controllerState = {};
 
-socket.on('inputFromController', msg => {
+socket.on('inputFromController', msg => { 
   const breakdown = msg.split('-');
 
   if(breakdown[1] === 'on') {
