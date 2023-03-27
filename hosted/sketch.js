@@ -1,30 +1,34 @@
 const socket = io();
 
-const rectPos = {x: 200, y: 200};
-
+const controllerState = {
+  up: false,
+  down: false,
+}
 
 socket.on('inputFromController', msg => {
-  switch(msg) {
-    case 'down':
-      rectPos.y += 5;
-      break;
-    case 'up':
-      rectPos.y -= 5;
-      break;
-    default: break;
+  const breakdown = msg.split('-');
+
+  if(breakdown[1] === 'on') {
+    controllerState[breakdown[0]] = true;
+  }
+  else if(breakdown[1] === 'off') {
+    controllerState[breakdown[0]] = false;
   }
 });
 
+const rectPos = {x: 200, y: 200};
+
 function setup() {
-  socketFunctions();  
   createCanvas(400, 400);
 }
 
 function draw() {
   background(220);
+
+  if(controllerState.up) { rectPos.y--; }
+  if(controllerState.down) { rectPos.y++; }
+  if(controllerState.left) { rectPos.x--; }
+  if(controllerState.right) {rectPos.x ++};
+  
   rect(rectPos.x, rectPos.y, 50, 50);
-}
-
-const socketFunctions = () => {
-
 }

@@ -3,9 +3,21 @@
     <head>
         <script src="/socket.io/socket.io.js"></script>
         <script src="/assets/client.js"></script>
+        <style>
+            .touchSurface {
+                padding:100px;
+                background-color: gray;
+                text-align: center;
+                border: 2px solid black;
+                display: inline-block;
+            };
+        </style>
     </head>
     <body>
-        <button id="upButton">Click to Go Up</button>
-        <button id="downButton">Click to Go Down</button>
+        <a href="/assets/sketch.html">Sketch</a><br>
+        <div id="upButton" class="touchSurface">Up</div>
+        <div id="downButton" class="touchSurface">Down</div>
+        <div id="leftButton" class="touchSurface">Left</div>
+        <div id="rightButton" class="touchSurface">Right</div>
     </body>
 </html>
