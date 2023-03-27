@@ -13,6 +13,16 @@ const setupButton = (elementId, ctrlIdentifier) => {
     element.addEventListener('mousedown', () => emitControl(`${ctrlIdentifier}-on`));
     element.addEventListener('mouseup', () => emitControl(`${ctrlIdentifier}-off`));
     element.addEventListener('mouseout', () => emitControl(`${ctrlIdentifier}-off`));
+
+    element.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        emitControl(`${ctrlIdentifier}-on`);
+    });
+
+    element.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        emitControl(`${ctrlIdentifier}-off`);
+    });
 };
 
 const init = () => {
